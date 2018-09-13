@@ -4,17 +4,15 @@
 
 # Site
 title: 一IT届吸猫狂
+tags:
+  - hexo
+  - hexo theme
+top_img: false
 subtitle: coding pet life
 description: 成为内心强大的自己
 keywords:
 author: 一IT届吸猫狂sivenwu
-language:
-timezone:
-top_img: https://github.com/YuanClouds/yuanclouds.github.io/blob/master/img/pet.jpg
-social:
-  github: https://github.com/Molunerfinn
-  weibo: http://weibo.com/mybluedreams
-  rss: https://Molunerfinn/atom.xml
+language: en
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
