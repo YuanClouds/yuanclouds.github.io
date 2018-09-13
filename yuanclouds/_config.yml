@@ -10,6 +10,11 @@ keywords:
 author: 一IT届吸猫狂sivenwu
 language:
 timezone:
+top_img: /img/pet.jpg
+social:
+  github: https://github.com/Molunerfinn
+  weibo: http://weibo.com/mybluedreams
+  rss: https://Molunerfinn/atom.xml
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -74,7 +79,6 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: melody
-top_img: https://desk-fd.zol-img.com.cn/t_s1280x800c5/g5/M00/02/00/ChMkJlbKxCKIcH1MAAIILOvZcd4AALHCABEqHAAAghE799.jpg
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
