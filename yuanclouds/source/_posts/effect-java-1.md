@@ -1,8 +1,7 @@
 ---
 title: 小知识 - 灵活对象的构建与销毁篇
 date: 2018-09-12 19:50:50
-tags: 一些比较少见的java优化
-top_img: http://d.5857.com/mxr_170206/001.jpg
+tags: EffectJava
 ---
 
 # # 小知识 - 灵活对象的构建与销毁篇

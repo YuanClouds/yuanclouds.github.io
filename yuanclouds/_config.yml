@@ -7,11 +7,10 @@ title: 一IT届吸猫狂
 tags:
   - hexo
   - hexo theme
-top_img: false
-subtitle: 一IT届吸猫狂
-description: 成为内心强大的自己
+subtitle: 梦想，一直在路上
+description: 梦想，一直在路上
 keywords:
-author: 一IT届吸猫狂sivenwu
+author: siven.wu
 language: en
 
 # URL
@@ -80,7 +79,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: melody
+theme: melody_theme
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
