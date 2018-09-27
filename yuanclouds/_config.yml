@@ -8,7 +8,7 @@ tags:
   - hexo
   - hexo theme
 top_img: false
-subtitle: coding pet life
+subtitle: 一IT届吸猫狂
 description: 成为内心强大的自己
 keywords:
 author: 一IT届吸猫狂sivenwu
@@ -16,7 +16,7 @@ language: en
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://yuanclouds.cn
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
