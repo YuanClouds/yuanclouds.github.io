@@ -1,5 +1,5 @@
 ---
-title: 线程优化系列】16ms？60Fps？Android中的多线程
+title: 16ms？60Fps？Android中的多线程
 date: 2018-09-12 19:51:00
 tags:
 ---
