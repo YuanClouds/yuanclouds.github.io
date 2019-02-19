@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="初遇pythonWeb之Flask的简洁"><meta name="keywords" content="python"><meta name="author" content="siven.wu,undefined"><meta name="copyright" content="siven.wu"><title>初遇pythonWeb之Flask的简洁 | 一IT届吸猫狂 · siven.wu</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.5.6"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css?version=1.5.6"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、前言"><span class="toc-number">1.</span> <span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、Flask-简言"><span class="toc-number">2.</span> <span class="toc-text">二、Flask 简言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、学习输出"><span class="toc-number">3.</span> <span class="toc-text">三、学习输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间："><span class="toc-number">3.0.1.</span> <span class="toc-text">时间：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相关知识点："><span class="toc-number">3.0.2.</span> <span class="toc-text">相关知识点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现结果"><span class="toc-number">3.0.3.</span> <span class="toc-text">实现结果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0x01-app接口"><span class="toc-number">3.0.3.1.</span> <span class="toc-text">0x01 app接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x02-web管理后台"><span class="toc-number">3.0.3.2.</span> <span class="toc-text">0x02 web管理后台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x03-其他"><span class="toc-number">3.0.3.3.</span> <span class="toc-text">0x03 其他</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#效果图"><span class="toc-number">3.0.3.4.</span> <span class="toc-text">效果图</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、Flask-技术点"><span class="toc-number">4.</span> <span class="toc-text">三、Flask 技术点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask的路由"><span class="toc-number">4.1.</span> <span class="toc-text">Flask的路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask的-Flask-RESTful"><span class="toc-number">4.2.</span> <span class="toc-text">Flask的 Flask-RESTful</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask的-flask-mongo"><span class="toc-number">4.3.</span> <span class="toc-text">Flask的 flask-mongo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实例化mongo对象"><span class="toc-number">5.</span> <span class="toc-text">实例化mongo对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置mongo"><span class="toc-number">6.</span> <span class="toc-text">配置mongo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化数据库"><span class="toc-number">7.</span> <span class="toc-text">初始化数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask的-flask-httpauth"><span class="toc-number">7.1.</span> <span class="toc-text">Flask的 flask-httpauth</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask的-blueprint蓝图"><span class="toc-number">7.2.</span> <span class="toc-text">Flask的 blueprint蓝图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask的装饰器与cache"><span class="toc-number">7.3.</span> <span class="toc-text">Flask的装饰器与cache</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、项目讲解"><span class="toc-number">8.</span> <span class="toc-text">四、项目讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#项目描述"><span class="toc-number">8.0.1.</span> <span class="toc-text">项目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目架构"><span class="toc-number">8.0.2.</span> <span class="toc-text">项目架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#appService部分讲解"><span class="toc-number">8.0.3.</span> <span class="toc-text">appService部分讲解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、总结"><span class="toc-number">9.</span> <span class="toc-text">五、总结</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://upload.jianshu.io/users/upload_avatars/2516602/9225851688f9.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240"></div><div class="author-info__name text-center">siven.wu</div><div class="author-info__description text-center">梦想，一直在路上</div><div class="follow-button"><a href="https://github.com/YuanClouds" target="_blank">关注我吧</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">8</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">5</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g5/M00/01/0E/ChMkJlbKwh-ING8cAAmli9auF40AALGjAOM884ACaWj30.jpeg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">一IT届吸猫狂 · siven.wu</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a></span></div><div id="post-info"><div id="post-title">初遇pythonWeb之Flask的简洁</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-19</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><pre><code>作为一个客户端开发人员，python基础初级，web基础初级。以前在ssh、ssm的年代，框架搭建成本、代码臃肿成本等等因素影响开发效率，也带来了学习的阻力（深刻体会ed）。在了解python基本语法后，选择了了解这个轻量级的web框架Flask。
+</code></pre><h1 id="二、Flask-简言"><a href="#二、Flask-简言" class="headerlink" title="二、Flask 简言"></a>二、Flask 简言</h1><p>   Flask是一个使用python编写的轻量级web应用框架，基于Werkzeug WSGI工具箱和Jinja2 模板引擎。相对Django，Flask最大的亮点就是它保持一个最简单的核心，可以通过扩展的特性新增必要的核心功能，例如文件上传、身份验证、缓存处理等。很适合小团队web开发，轻量可定制并且效率快。</p>
+<h1 id="三、学习输出"><a href="#三、学习输出" class="headerlink" title="三、学习输出"></a>三、学习输出</h1><h3 id="时间："><a href="#时间：" class="headerlink" title="时间："></a>时间：</h3><ul>
+<li>3 day</li>
+</ul>
+<h3 id="相关知识点："><a href="#相关知识点：" class="headerlink" title="相关知识点："></a>相关知识点：</h3><ul>
+<li>Flask jinja2</li>
+<li>Flask Blueprint、视图</li>
+<li>Flask Cache、HttpAuth、MongoDb</li>
+</ul>
+<h3 id="实现结果"><a href="#实现结果" class="headerlink" title="实现结果"></a>实现结果</h3><h4 id="0x01-app接口"><a href="#0x01-app接口" class="headerlink" title="0x01 app接口"></a>0x01 app接口</h4><ul>
+<li>用户注册</li>
+<li>用户登录，获取令牌</li>
+<li>获取用户信息，需要校验令牌，有10秒缓存（不直接查询数据库）</li>
+</ul>
+<h4 id="0x02-web管理后台"><a href="#0x02-web管理后台" class="headerlink" title="0x02 web管理后台"></a>0x02 web管理后台</h4><ul>
+<li>查看注册用户列表</li>
+</ul>
+<h4 id="0x03-其他"><a href="#0x03-其他" class="headerlink" title="0x03 其他"></a>0x03 其他</h4><ul>
+<li>数据库支持mongo</li>
+<li>使用蓝图管理服务</li>
+</ul>
+<h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><ul>
+<li>注册</li>
+</ul>
+<p><img src="http://pn5gfsan2.bkt.clouddn.com/flasksample/0.png" alt="76264992.png"></p>
+<ul>
+<li>登录</li>
+</ul>
+<p><img src="http://pn5gfsan2.bkt.clouddn.com/flasksample/1.png" alt="76283238.png"></p>
+<ul>
+<li>获取个人信息(未登录无权限情况)</li>
+</ul>
+<p><img src="http://pn5gfsan2.bkt.clouddn.com/flasksample/2.png" alt="76359005.png"></p>
+<ul>
+<li>获取个人信息（已登录有权限情况）</li>
+</ul>
+<p><img src="http://pn5gfsan2.bkt.clouddn.com/flasksample/3.png" alt="76399823.png"></p>
+<ul>
+<li>后台管理系统（查看注册用户信息）</li>
+</ul>
+<p><img src="http://pn5gfsan2.bkt.clouddn.com/flasksample/4.png" alt="76431753.png"></p>
+<h1 id="三、Flask-技术点"><a href="#三、Flask-技术点" class="headerlink" title="三、Flask 技术点"></a>三、Flask 技术点</h1><h2 id="Flask的路由"><a href="#Flask的路由" class="headerlink" title="Flask的路由"></a>Flask的路由</h2><p>Flask相对于SSM常见的框架，Flask的路由基于Werkzeug路由模块，路由中的url配置是直接写在执行的函数上的。不过对于轻量级的系统来说，灵活配置的意义也不大，相反在这一块维护性更强，例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app = serviceEngine = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app</span>.route(<span class="string">'/'</span>)</span><br><span class="line"><span class="meta">@app</span>.route(<span class="string">'/index'</span>)</span><br><span class="line"><span class="meta">@app</span>.route(<span class="string">'/index/&lt;name&gt;'</span>)</span><br><span class="line"><span class="function">def <span class="title">index</span><span class="params">(name=None)</span>:</span></span><br><span class="line"><span class="function">        <span class="keyword">if</span> name is None:</span></span><br><span class="line"><span class="function">             return'Hello World'</span></span><br><span class="line"><span class="function">        return 'Hello %s' % name</span></span><br></pre></td></tr></table></figure>
+<p>默认运行在5000端口，这上面的代码表示 http:localhost:5000 和 http:localhost:5000/index 并且两个url都会返回‘Hello World’这个字符串。如果访问 http:localhost:5000/index/siven，url则会返回 ’Hello siven‘</p>
+<p>这里涉及到三个知识点：</p>
+<ul>
+<li><p>默认路由</p>
+<p>默认路由就是@app.route(‘/‘)，这个应该好理解</p>
+</li>
+<li><p>多URL的路由</p>
+<p>多URL路由表示一个函数可以支持多个URL路由，例如index函数就支持上面代码的三个URL</p>
+</li>
+<li><p>带参数的路由</p>
+<p>路由URL支持带参数，@app.route(‘/index/<name>‘)，如果路由发现index后面又进行传参，则会返回到 ‘Hello %s’ % name</name></p>
+</li>
+</ul>
+<p>详细可以参考文档 <a href="https://dormousehole.readthedocs.io/en/latest/quickstart.html#id6" target="_blank" rel="noopener">@Flask路由</a></p>
+<h2 id="Flask的-Flask-RESTful"><a href="#Flask的-Flask-RESTful" class="headerlink" title="Flask的 Flask-RESTful"></a>Flask的 Flask-RESTful</h2><p>从上面我们可以了解到在Flask中定义一个http接口非常简单，但是Flask还支持更简单的方法，就是Flask-RESTful扩展。<br>首先因为Flask-RESTful是官方拓展库，需要先进行引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install Flask-RESTful</span><br></pre></td></tr></table></figure>
+<p>实现代码举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def abort_if_value_invaild(value):</span><br><span class="line">    if value &lt; 0:</span><br><span class="line">        abort(404, message=&quot;value &#123;&#125; is invaild !!!&quot;.format(value))</span><br><span class="line"></span><br><span class="line">class Test(Resource):</span><br><span class="line">    def post(self):</span><br><span class="line">         value = request.args.get(&apos;value&apos;)  # 获取请求参数</span><br><span class="line">         abort_if_value_invaild(value)</span><br><span class="line">          return &apos;请求返回 %d&apos; % value   </span><br><span class="line"></span><br><span class="line">api.add_resource(Test, &apos;/test&apos;,&apos;/test2&apos;)</span><br></pre></td></tr></table></figure>
+<p>这里涉及三个知识点</p>
+<ul>
+<li>RESTful 的基本用法</li>
+</ul>
+<p>首先RESTful通过“api.add_resource”方法进行添加路由，其中方法的第一个形参是一个类名，并且这个类继承于Resource类，并且实现不同的HTTP方法，例如get、post、delete等请求。第二个参数则表示当前这个api的URL路径，例如上面代码案例，请求实现类为其父类Resource的Test类，并且实现post逻辑，最后通过add_resource进行api注册，api路径表示’/test’</p>
+<ul>
+<li>支持多个URL路由的RESTful</li>
+</ul>
+<p>RESTful支持多个URL路由相对较为简单，只需要在add_resource注册api的时候进行多URL路径设置即可</p>
+<ul>
+<li>关于abort</li>
+</ul>
+<p>在某些场景，例如本代码案例中要校验令牌token，如果在校验失败的时候我们希望有一个统一的逻辑去处理这种状况，abort函数除了异常抛出外，abort无疑是一个你最佳的一个选择。“abort()”可以直接退回出请求</p>
+<h2 id="Flask的-flask-mongo"><a href="#Flask的-flask-mongo" class="headerlink" title="Flask的 flask-mongo"></a>Flask的 flask-mongo</h2><p>mongo属于文档型数据库，因其快速且有很高的扩展性被大多数开发者的认同，mongo存储格式为json格式，在数据处理来说较为方便。这里就不详细介绍mongo，详情了解可以<a href="https://www.mongodb.com/cn" target="_blank" rel="noopener">@mongo</a></p>
+<p>同样因为Flask-PyMongo是官方拓展库，需要先进行引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ pip install Flask-PyMongo</span><br><span class="line">``</span><br><span class="line">实现代码举例：</span><br><span class="line"></span><br><span class="line">开发过java web的同学应该知道JDBC这个连接驱动包，通过配置指定的数据库URL链接、用户名以及密码后即可连接Mysql数据库。在PyMongo同理是通过 app.config.update进行连接配置，例如下面代码：</span><br><span class="line"></span><br><span class="line">+ mongo配置</span><br></pre></td></tr></table></figure>
+<h1 id="实例化mongo对象"><a href="#实例化mongo对象" class="headerlink" title="实例化mongo对象"></a>实例化mongo对象</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo = PyMongo()</span><br></pre></td></tr></table></figure>
+<h1 id="配置mongo"><a href="#配置mongo" class="headerlink" title="配置mongo"></a>配置mongo</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.config.update(</span><br><span class="line">    MONGO_URI=&apos;mongodb://localhost:27017/flask&apos;, # 表示MongoURL连接</span><br><span class="line">    MONGO_USERNAME=&apos;siven&apos;, # 表示连接用户名</span><br><span class="line">    MONGO_PASSWORD=&apos;123456&apos; # 表示连接用户密码</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h1 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo.init_app(app)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>mongo应用实例</li>
+</ul>
+<p>数据库插入 api</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user = &#123;&apos;username&apos;:username,&apos;userinfo&apos;:&#123;&apos;age&apos;:18,&apos;sex&apos;:0&#125;&#125;</span><br><span class="line"># 数据库插入成功后会返回一个id</span><br><span class="line">insertedId = mongo.db.users.insert_one(user).inserted_id</span><br></pre></td></tr></table></figure>
+<p>数据库查询api</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 根据username的key查询当前这个文档的json字符串，如果使用find进行查询是返回一个游标，需要开发者进行遍历</span><br><span class="line">user = mongo.db.users.find_one(&#123;&apos;username&apos;:username&#125;)</span><br></pre></td></tr></table></figure>
+<p>其他api可以参考<a href="http://api.mongodb.com/python/current/api/pymongo/" target="_blank" rel="noopener">@PyMongo</a></p>
+<h2 id="Flask的-flask-httpauth"><a href="#Flask的-flask-httpauth" class="headerlink" title="Flask的 flask-httpauth"></a>Flask的 flask-httpauth</h2><p>flask为开发者提供了一个很简便的Restful API认证库“flask-httpauth”，其中支持校验方式有HTTPBasicAuth、HTTPTokenAuth、HTTPDigestAuth等，可以查看<a href="http://flask-httpauth.readthedocs.io/en/latest/" target="_blank" rel="noopener">@flask-httpauth</a></p>
+<ul>
+<li>HTTPBasicAuth</li>
+</ul>
+<p>并没有启动cookie的功能，验证只是在头部设置了 Authorization 字段来校验用户</p>
+<ul>
+<li>HTTPTokenAuth</li>
+</ul>
+<p>通过令牌的校验用户</p>
+<ul>
+<li>…</li>
+</ul>
+<p>应用实例，模拟一个请求用户信息的api</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># token 校验，这里依赖了 itsdangerous 库管理token</span><br><span class="line">@auth.verify_token</span><br><span class="line">def verify_token(token):</span><br><span class="line">    print(&apos;verify_token ing... %s &apos; % token)</span><br><span class="line">    g.user = None</span><br><span class="line">    try:</span><br><span class="line">        data = serializer.loads(token)</span><br><span class="line">    except:</span><br><span class="line">        return False</span><br><span class="line">    if &apos;username&apos; in data:</span><br><span class="line">        g.user = data[&apos;username&apos;]</span><br><span class="line">        return True</span><br><span class="line">    return False</span><br><span class="line"></span><br><span class="line"># 统一处理验证失败处理</span><br><span class="line">@auth.error_handler</span><br><span class="line">def unauthorized():</span><br><span class="line">    return make_response(jsonify(&#123;&apos;error&apos;: &apos;Unauthorized access&apos;&#125;), 401)</span><br><span class="line"></span><br><span class="line"># 设置一个需要验证的api</span><br><span class="line">@app.route(&apos;/getmyuserinfo&apos;)</span><br><span class="line">@auth.login_required</span><br><span class="line">def getmyuserinfo():</span><br><span class="line">    return &quot;Hello, %s!&quot; % auth.username()</span><br></pre></td></tr></table></figure>
+<p>这里涉及到三个知识点</p>
+<ul>
+<li>login_required修饰符<br> 通过login_required修饰的api，则意味着用户请求api都需要进行验证，验证方式由auth初始化实例的时候决定</li>
+<li>verify_token修饰符<br>  通过verify_token修饰的函数，则意味着login_required修饰的api需要校验的逻辑在该函数上处理</li>
+<li>error_handler修饰符<br>  首先看下verify_token的返回值为布尔值，通过error_handler修饰的函数表示统一处理验证失败处理逻辑，如果验证成功继续走api的逻辑</li>
+</ul>
+<p><a href="http://flask-httpauth.readthedocs.io/en/latest/" target="_blank" rel="noopener">@flask-httpauth</a></p>
+<h2 id="Flask的-blueprint蓝图"><a href="#Flask的-blueprint蓝图" class="headerlink" title="Flask的 blueprint蓝图"></a>Flask的 blueprint蓝图</h2><p>在web的应用场景，面向前端有apiServer层，面向运维有web管理后台。两者虽然都存在同一个应用中，但是业务与风格又有所不同。开发者如果想区分两个web应用，总有一些代码想进行重用。所以flask提供了blueprint蓝图的功能。blueprint蓝图管理的应用相当于应用里面的自营业，可以有自己的模板、静态目录、URL规则等，并且每个蓝图直接没有任何影响，可以共用应用的配置。<br>图</p>
+<p>@详情在案例项目讲解说明</p>
+<h2 id="Flask的装饰器与cache"><a href="#Flask的装饰器与cache" class="headerlink" title="Flask的装饰器与cache"></a>Flask的装饰器与cache</h2><p>Flask的装饰器可以理解类似java平台的动态代理，典型的AOP思想，在打点、日志场景用得较多。装饰器模式Decorator可以动态的扩充一个类或者函数的功能，实现的方法一般是在原有的类或者函数上包裹一层修饰类或修饰函数</p>
+<ul>
+<li>基础用例：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 案例</span><br><span class="line">def multiply(number):</span><br><span class="line">    def in_func(value):</span><br><span class="line">        return value * number</span><br><span class="line">    return in_func</span><br><span class="line"></span><br><span class="line">double = multiply(2)</span><br><span class="line">triple = multiply(3)</span><br><span class="line">print double(5)</span><br><span class="line">print triple(3)</span><br></pre></td></tr></table></figure>
+<p>顾名思义，装饰器指的是在原来的函数或类进行一层逻辑装饰，案例代码里面 in_func 函数由multiply进行装饰<br>multiply(2)返回的double函数，其实实质是in_func函数，执行double(5)的时候相当于返回了 2 <em> 5<br>同理 triple(3) 函数执行相当于等同 3 </em> 3</p>
+<ul>
+<li>装饰器传入函数</li>
+</ul>
+<p>借鉴AOP思维，如果要在一个函数里面增加日志打印方法，可以这么做:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def add_log(func):</span><br><span class="line">    # *args matches all arguments without key</span><br><span class="line">    # **kwargs matches all key=value arguments</span><br><span class="line">    def newFunc(*args, **kwargs):</span><br><span class="line">        logger.debug(&quot;Before %s() call&quot; % func.__name__)</span><br><span class="line">        ret = func(*args, **kwargs)</span><br><span class="line">        logger.debug(&quot;After %s() call&quot; % func.__name__)</span><br><span class="line">        return ret</span><br><span class="line">    return newFunc</span><br><span class="line"></span><br><span class="line">def funcC(x, y):</span><br><span class="line">    print x + y</span><br><span class="line">newFuncC = add_log(funcC)</span><br><span class="line">newFuncC(2, y=3)</span><br></pre></td></tr></table></figure>
+<p>这里args代表是一个任意类型的数组数据，kwargs代表是一个字典类型(k=v)的数组数据<br>上面装饰器的思想是：在逻辑函数里面装饰一层日志打印逻辑，最后通过返回一个新的函数给调用方</p>
+<ul>
+<li>装饰器注解操作符<br>根据上面改造，可以这么做：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def add_log(func):</span><br><span class="line">    # *args matches all arguments without key</span><br><span class="line">    # **kwargs matches all key=value arguments</span><br><span class="line">    def newFunc(*args, **kwargs):</span><br><span class="line">        logger.debug(&quot;Before %s() call&quot; % func.__name__)</span><br><span class="line">        ret = func(*args, **kwargs)</span><br><span class="line">        logger.debug(&quot;After %s() call&quot; % func.__name__)</span><br><span class="line">        return ret</span><br><span class="line">    return newFunc</span><br><span class="line"></span><br><span class="line">@add_log</span><br><span class="line">def funcC(x, y):</span><br><span class="line">    print x + y</span><br><span class="line"></span><br><span class="line">// 直接这么调用</span><br><span class="line">funcC(2, y=3)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>说那么多装饰器的实例，其实就是想表达flask中的cache底层原理就是装饰器。在下面项目案例中，会通过装饰器实现了一个简单的token校验处理，读者可以多关心看下。</p>
+<h1 id="四、项目讲解"><a href="#四、项目讲解" class="headerlink" title="四、项目讲解"></a>四、项目讲解</h1><h3 id="项目描述"><a href="#项目描述" class="headerlink" title="项目描述"></a>项目描述</h3><p>相对App服务，实现基本的注册登录以及token校验。相对后台管理员人员，实现可查看注册用户。详细在上面<strong>实现结果</strong>有说明</p>
+<h3 id="项目架构"><a href="#项目架构" class="headerlink" title="项目架构"></a>项目架构</h3><p><img src="http://pn5gfsan2.bkt.clouddn.com/flasksample/6.jpg" alt="bf7b5f49-db6f-467a-be2c-4be479830e2a.jpg"></p>
+<ul>
+<li>ServiceCore</li>
+</ul>
+<p>ServiceCore表示项目中的公用服务层，常用语其他子服务的公共服务。其他子web服务通过flask提供的蓝图BlurePrint进行注入</p>
+<ul>
+<li>AppService</li>
+</ul>
+<p>AppService表示客户端api层，有部分api是需要经过Token令牌层校验的。其中AppService里面包括其他子服务程序，例如userService，用户相关的服务(注册、登录等)</p>
+<ul>
+<li>WebService</li>
+</ul>
+<p>WebService表示后台管理层，demo展示类暂时没做安全校验</p>
+<ul>
+<li>DataBase</li>
+</ul>
+<p>DataBase表示数据模型层</p>
+<ul>
+<li>项目目录</li>
+</ul>
+<p><img src="http://pn5gfsan2.bkt.clouddn.com/flasksample/5.png" alt="81361055.png"></p>
+<h3 id="appService部分讲解"><a href="#appService部分讲解" class="headerlink" title="appService部分讲解"></a>appService部分讲解</h3><ul>
+<li>主服务配置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 应用服务引擎</span><br><span class="line">serviceEngine = Flask(__name__)</span><br><span class="line"># 注册第三方组件</span><br><span class="line">thirds_register(serviceEngine)</span><br><span class="line"># 注册蓝图</span><br><span class="line">serviceEngine.register_blueprint(web,url_prefix=&apos;/webservice&apos;) # 后台管理系统</span><br><span class="line">serviceEngine.register_blueprint(app,url_prefix=&apos;/appservice&apos;) # app接口服务</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注册蓝图</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">serviceEngine.register_blueprint(web,url_prefix=&apos;/webservice&apos;) # 后台管理系统</span><br><span class="line">serviceEngine.register_blueprint(app,url_prefix=&apos;/appservice&apos;) # app接口服务</span><br></pre></td></tr></table></figure>
+<ul>
+<li>程序入口</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from flask import Blueprint</span><br><span class="line">from app.appService import service</span><br><span class="line"></span><br><span class="line">app = Blueprint(&apos;app&apos;, __name__, template_folder=&apos;./templates&apos;)</span><br><span class="line"># 注册接口服务</span><br><span class="line">service.register(app)</span><br></pre></td></tr></table></figure>
+<p>程序初始化通过flask的Blueprint注入到主服务程序，最后通过appService api注册业务接口服务</p>
+<ul>
+<li>业务接口服务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># userService</span><br><span class="line">def register(api):</span><br><span class="line">    api.add_resource(Test,&apos;/user/test&apos;)</span><br><span class="line">    api.add_resource(UserRegister,&apos;/user/register&apos;)</span><br><span class="line">    api.add_resource(UserLogin,&apos;/user/login&apos;)</span><br><span class="line">    api.add_resource(UserInfo,&apos;/user/getUserInfo&apos;)</span><br></pre></td></tr></table></figure>
+<p>在程序初始化时会遍历所有需要注册的业务接口服务，其中上面代码举例的是用户相关的接口服务userService，其中接口包括注册、登录以及获取用户信息</p>
+<ul>
+<li>业务接口-用户接口登录</li>
+</ul>
+<p>查看实例相关实例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class UserLogin(Resource):</span><br><span class="line">    def post(self):</span><br><span class="line">        # 1.获取用户的账号密码，这里由于是用例，密码是明文</span><br><span class="line">        account = request.json.get(&apos;account&apos;)</span><br><span class="line">        password = request.json.get(&apos;password&apos;)</span><br><span class="line">        # 2.数据库查询校验密码</span><br><span class="line">        result = useModelService.loginUser(account,password)</span><br><span class="line">        # 3.如果结果不对，直接交给abort进行异常处理</span><br><span class="line">        abort_if_error(result)</span><br><span class="line">        # 4.登录成功刷新token</span><br><span class="line">        token = User.generate_auth_token(account)</span><br><span class="line">        #....</span><br><span class="line">        return result</span><br></pre></td></tr></table></figure>
+<p>useModelService是数据mode层的接口实例，里面代理了mongo的实例，提供对user用户数据模型的相关数据库操作<br>login接口中，通过获取用户post的账号密码，如果在数据库校验正确，则刷新缓存的token，并且将token返回给请求用户，否则抛出并且返回异常给用户</p>
+<ul>
+<li>业务接口-用户获取用户信息</li>
+</ul>
+<p>查看相关实例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class UserInfo(Resource):</span><br><span class="line">    @token.verify</span><br><span class="line">    @cache.cached(timeout=10) # 缓存时间10秒</span><br><span class="line">    def post(self):</span><br><span class="line">        account = request.json.get(&apos;account&apos;)</span><br><span class="line">        result = useModelService.getUserInfo(account)</span><br><span class="line">        abort_if_error(result)</span><br><span class="line">        return jsonify(result)</span><br></pre></td></tr></table></figure>
+<p>首先这个接口相对较为特别的对方，是两个修饰器，一个是token.verify，另一个则是cache.cached。cache较为好理解，表示这个请求数据有10秒的缓存时间，超过10秒后才会去查下数据库（根据用户当前请求的cookie），这里不做详细讲解</p>
+<p>token.verify 顾名思义，修饰表示这个接口需要进行token校验。我们经过阅读上面修饰器的原理，可以了解修饰器是AOP的一种思维模式，通过一个函数修饰另外一个函数。因此这里我们可以查看到token实例的verify方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def verify(self,func):</span><br><span class="line">    def actionFun(self):</span><br><span class="line">        token = request.json.get(&apos;token&apos;)</span><br><span class="line">        result = User.verify_auth_token(token)</span><br><span class="line">        if result:</span><br><span class="line">            return func(self)</span><br><span class="line">            pass</span><br><span class="line">        else:</span><br><span class="line">            abort_if_token_invaild()</span><br><span class="line">    return actionFun</span><br></pre></td></tr></table></figure>
+<p>从上面我们可以看到verify方法的形参是一个方法，结果返回是一个新的方法。也就是当请求A的时候，修饰器token.verify会先执行actionFun的方法逻辑，通过从request的token信息进行校验后，如果校验结果是正确的才真正的去执行原方法逻辑A，否则抛出abort</p>
+<h1 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h1><p>本文举例了一个简单的web案例实例应用与讲解（在大型的web后台开发中当然考虑的东西不能这么少了），大概地从数据库mongo、令牌HttpAuth、蓝图管理子服务等层面描述了flask的一些拓展应用。</p>
+<p>以前接触过java的ssm、ssh框架，相对前者而言，flask给我最大的体验就是轻量化、拓展性强以及可快速快发。虽然在实例中并没有很深入开拓flask的种种拓展功能，但是入门的restful api体验已经让我喜欢上flask这个框架。而且综合学习成本和性能，flask已经算是一个不错的轻量级web框架。给个赞~</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">siven.wu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://yuanclouds.cn/2019/02/19/pythonweb-flask/">http://yuanclouds.cn/2019/02/19/pythonweb-flask/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/python/">python</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2018/10/07/原生优雅的多线程机制/"><span>原生优雅的多线程机制</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2019 By siven.wu</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">Halo, welcome to my <a href="https://yuanclouds.cn">blog</a>!</div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.6"></script><script src="/js/fancybox.js?version=1.5.6"></script><script src="/js/sidebar.js?version=1.5.6"></script><script src="/js/copy.js?version=1.5.6"></script><script src="/js/fireworks.js?version=1.5.6"></script><script src="/js/transition.js?version=1.5.6"></script><script src="/js/scroll.js?version=1.5.6"></script><script src="/js/head.js?version=1.5.6"></script></body></html>
