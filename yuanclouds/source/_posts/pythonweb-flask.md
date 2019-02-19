@@ -6,13 +6,17 @@ tags: python
 
 # 一、前言
 
-    作为一个客户端开发人员，python基础初级，web基础初级。以前在ssh、ssm的年代，框架搭建成本、代码臃肿成本等等因素影响开发效率，也带
-    来了学习的阻力（深刻体会ed）。在了解python基本语法后，选择了了解这个轻量级的web框架Flask。
+作为一个客户端开发人员，python基础初级，web基础初级。以前在ssh、ssm的年代，框架搭建成本、代码臃肿成本等等因素影响开发效率，也带
+来了学习的阻力（深刻体会ed）。
+
+在了解python基本语法后，选择了了解这个轻量级的web框架Flask。
 
 # 二、Flask 简言
 
-   Flask是一个使用python编写的轻量级web应用框架，基于Werkzeug WSGI工具箱和Jinja2 模板引擎。相对Django，Flask最大的亮点就是它保持
-   一个最简单的核心，可以通过扩展的特性新增必要的核心功能，例如文件上传、身份验证、缓存处理等。很适合小团队web开发，轻量可定制并且效率快。
+Flask是一个使用python编写的轻量级web应用框架，基于Werkzeug WSGI工具箱和Jinja2 模板引擎。
+
+相对Django，Flask最大的亮点就是它保持
+一个最简单的核心，可以通过扩展的特性新增必要的核心功能，例如文件上传、身份验证、缓存处理等。很适合小团队web开发，轻量可定制并且效率快。
 
 # 三、学习输出
 
@@ -139,9 +143,11 @@ mongo属于文档型数据库，因其快速且有很高的扩展性被大多数
 
 同样因为Flask-PyMongo是官方拓展库，需要先进行引用
 
+
 ```
 $ pip install Flask-PyMongo
-``
+```
+
 实现代码举例：
 
 开发过java web的同学应该知道JDBC这个连接驱动包，通过配置指定的数据库URL链接、用户名以及密码后即可连接Mysql数据库。在PyMongo同理是通过 app.config.update进行连接配置，例如下面代码：
@@ -163,6 +169,7 @@ app.config.update(
 mongo.init_app(app)
 
 ```
+
 + mongo应用实例
 
 数据库插入 api
@@ -179,6 +186,7 @@ mongo.init_app(app)
     # 根据username的key查询当前这个文档的json字符串，如果使用find进行查询是返回一个游标，需要开发者进行遍历
     user = mongo.db.users.find_one({'username':username}) 
 ```
+
 其他api可以参考[@PyMongo](http://api.mongodb.com/python/current/api/pymongo/)
 
 ## Flask的 flask-httpauth
