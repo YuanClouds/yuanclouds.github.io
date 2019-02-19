@@ -148,23 +148,18 @@ $ pip install Flask-PyMongo
 
 ```
 # 实例化mongo对象
-
-```
 mongo = PyMongo()
-```
-# 配置mongo 
 
-```
+# 配置mongo
 app.config.update(
     MONGO_URI='mongodb://localhost:27017/flask', # 表示MongoURL连接
     MONGO_USERNAME='siven', # 表示连接用户名
     MONGO_PASSWORD='123456' # 表示连接用户密码
 )
-```
-# 初始化数据库
 
-```
+# 初始化数据库
 mongo.init_app(app)
+
 ```
 + mongo应用实例
 
